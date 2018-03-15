@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digital Clock And calculator</title>
+    <style media="screen">
+      body {
+        font-family: 'Orbitron', sans-serif;
+      }
+      html, body {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    body {
+    display: flex;
+    flex-direction: column;
+    }
+    header {
+    height: 75px;
+    margin-top: 10px;
+    text-align: center;
+    }
+
+    main {
+    flex: auto;
+    background-color: #ccc;
+    }
+
+    footer {
+    height: 25px;
+    text-align: right;
+    }
+      h5 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 16px;
+        text-shadow: #FC0 1px 0 10px;
+        text-align: center;
+      }
+
+      .calculator {
+        height: 510px;
+        width: 300px;
+        margin-top:2%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color:lavender;
+        border: 2px solid olive;
+        border-radius: 20px;
+        box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #888888;
+        }
+      .clock {
+        text-align: center;
+        height: 40px;
+        width:240px;
+        margin:0 auto;
+        border: 1px solid olive;
+        border-radius: 10px;
+        box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #888888;
+        }
+      .title {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        }
+      .entrybox {
+        width: 85%;
+        height: 65px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 2px solid #BFBFBF;
+        border-radius: 6px;
+        background-color: #c4c7ab;
+      }
+      .entry {
+        margin-right: 10px;
+        font-size: 35px;
+      }
+      .buttons {
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        position: absolute;
+        display: inline-block;
+        width: 280px;
+        height: auto;
+        margin-top: 15px;
+        margin-left: 15px;
+      }
+      button{
+        border-radius: 8px;
+        border: none;
+        background-color:grey;
+        margin: 0 4px 10px 8px;
+        height: 40px;
+        width: 50px;
+        box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 10px 1px #515151;
+      }
+      button:active {
+        transform: translate(0px, 3px);
+        box-shadow: none;
+      }
+      .row {
+        margin-top: 20px
+      }
+      .topAdjust {
+        margin-top: -52px;
+      }
+      .equalButton {
+        position: absolute;
+        margin-left: 12px;
+        height: 40px;
+        width: 50px;
+      }
+      .zeroButton {
+        width: 117px;
+      }
+      .red {
+        font-size: 14px;
+        background-color: #a72d45;
+        box-shadow: 0px 3px 0px 0px #671c2a;
+      }
+      .footer {
+        font-family: 'Josefin Sans', sans-serif;
+        position: relative;
+        font-size: 16px;
+        font-weight: normal;
+        margin-top: 40px;
+        width: 100%;
+        height: 40px;
+      }
+      button,
+      button:hover,
+      button:active,
+      button:visited {
+        text-decoration: none;
+        outline: none;
+      }
+
+      a,
+      a:hover,
+      a:active,
+      a:visited {
+        color: #922031;
+        text-decoration: none ;
+        outline: none ;
+      }
+      .history {
+        position: relative;
+        height: 10px;
+        bottom: 17px;
+        margin-right: 14px;
+        color: #E9E9E9;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body onload="startTime()">
+    <header>
+      <h3><strong>Java Script calculator<strong></h3></header>
+    <main>
+    <div class='container'>
+      <div class='calculator'>
+        <div class="clock">
+          <p id="clock">Digital Clock</p>
+        </div>
+        <div class='title' class='text-center'>
+          <h5><b>CALCULATOR</b></h5>
+        </div>
+        <!-- ENTRY BOX -->
+        <div class="screen">
+          <div class="entrybox">
+          <h1 id="mainScreen">0</h1>
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class='buttons'>
+          <!-- <input type="text" class="calcDisplay" id="display" /> -->
+          <button class=' red' value='ac' onclick="clearAll()">AC</button>
+          <button class='red' value='ce' onclick="DeleteLastSymbol()">CE</button>
+          <button value="/" id="104" onclick="InputSymbol(104)">&divide;</button>
+          <button value="*" id="103" onclick="InputSymbol(103)">*</button>
+
+          <button value="7" id="7" onclick="InputSymbol(7)">7</button>
+          <button value="8" id="8" onclick="InputSymbol(8)">8</button>
+          <button value="9" id="9" onclick="InputSymbol(9)">9</button>
+          <button value="-" id="102" onclick="InputSymbol(102)">-</button>
+
+          <button value="4" id="4" onclick="InputSymbol(4)">4</button>
+          <button value="5" id="5" onclick="InputSymbol(5)">5</button>
+          <button value="6" id="6" onclick="InputSymbol(6)">6</button>
+          <button value="+" id="101" onclick="InputSymbol(101)">+</button>
+
+          <button value="1" id="1" onclick="InputSymbol(1)">1</button>
+          <button value="2" id="2" onclick="InputSymbol(2)">2</button>
+          <button value="3" id="3" onclick="InputSymbol(3)">3</button>
+          <button value = "." class='decimal' id="105" onclick="InputSymbol(105)">.</button>
+
+
+          <button classs="zeroButton" value="0" id="0" onclick="InputSymbol(0)">0</button>
+          <button class="equalButton" value='=' onclick="CalculateTotal()">=</button>
+
+
+          </div>
+
+          <div class='tester'>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" class="text-center">
+      <div class="container">
+        <h4><em>Designed & Coded by Team: Jatinn, Lakshmi, Karsh, Ryan & Shawn<em></h4>
+      </div>
+    </footer>
+
+    <script src="./calculator.js">
+    </script>
+    <script>
+    var body = document.querySelector('body')
+    body.style.background = "lavender";
+    var h5 = document.querySelector('h5')
+    var isBlue = false;
+    setInterval (function() {
+      if (isBlue) {
+        h5.style.color = "blue";
+      }else {
+        h5.style.color = "#161616"
+      }
+      isBlue = !isBlue;
+      } , 1000)
+    </script>
+  </body>
+</html>
