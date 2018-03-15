@@ -1,1 +1,1 @@
-BAsic functions of calculator.
+Basic functions of calculator.
